@@ -278,25 +278,7 @@ function renderProjects(projects) {
     // Handle empty projects gracefully
     if (projects.length === 0) {
         if (tabsContainer) tabsContainer.style.display = 'none';
-        gridContainer.innerHTML = `
-            <div class="stat-card" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3.5rem 2rem; border: 1px dashed rgba(56, 189, 248, 0.35); background: rgba(14, 17, 26, 0.65); border-radius: var(--radius-lg);">
-                <div style="width: 56px; height: 56px; border-radius: 16px; background: rgba(56, 189, 248, 0.12); color: var(--accent-sky); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                </div>
-                <div class="project-badge-tag" style="position: static; margin-bottom: 0.85rem;">
-                    PROJECT SHOWCASE IN PROGRESS
-                </div>
-                <h3 class="text-gradient" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem;">
-                    10+ Projects Currently Being Documented & Staged
-                </h3>
-                <p style="color: var(--text-secondary); max-width: 600px; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
-                    Full-stack web applications, AI reverse engineering prototypes, and system security tools are currently being packaged for public release. Case studies and live interactive demos will be available here soon.
-                </p>
-                <a href="#contact" class="btn btn-secondary btn-sm">
-                    Inquire for Private Demos & Code Samples →
-                </a>
-            </div>
-        `;
+        gridContainer.innerHTML = '<p class="timeline-desc">I am documenting my first projects and will share them here when they are ready.</p>';
         return;
     }
 

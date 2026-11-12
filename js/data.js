@@ -44,7 +44,11 @@ const PROFILE_DATA = {
     experience: [],
     education: [{ degree: "B.Tech in Cyber Security", institution: "RV University", period: "Currently in second year", highlights: "Building foundations in computing and cyber security." }],
     certifications: [],
-    services: [],
+    services: [
+        { title: "Curiosity", description: "I like asking how systems work and following a problem until I understand it.", icon: "sparkles", deliverables: ["Ask questions", "Explore ideas"] },
+        { title: "Consistency", description: "I am building strong foundations through regular study and practice.", icon: "code", deliverables: ["Study regularly", "Practise fundamentals"] },
+        { title: "Responsible security", description: "I believe security learning should respect privacy, permission and people.", icon: "shield", deliverables: ["Respect permission", "Protect people"] }
+    ],
     testimonials: []
 };
 if (typeof window !== "undefined") window.PROFILE_DATA = PROFILE_DATA;
