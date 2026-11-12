@@ -72,10 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (statusPillText) statusPillText.textContent = data.personal.status.text;
 
     // Social Links
+    const socialsContainer = document.querySelector('.hero-socials');
+    let hasAnySocial = false;
     if (data.personal.social) {
-        document.querySelectorAll('[data-social="github"]').forEach(el => el.href = data.personal.social.github);
-        document.querySelectorAll('[data-social="linkedin"]').forEach(el => el.href = data.personal.social.linkedin);
-        document.querySelectorAll('[data-social="twitter"]').forEach(el => el.href = data.personal.social.twitter);
+        ['github', 'linkedin', 'twitter'].forEach(network => {
+            const el = document.querySelector(`[data-social="${network}"]`);
+            if (el) {
+                if (data.personal.social[network] && data.personal.social[network].trim() !== '') {
+                    el.href = data.personal.social[network];
+                    el.style.display = 'inline-flex';
+                    hasAnySocial = true;
+                } else {
+                    el.style.display = 'none';
+                }
+            }
+        });
+    }
+    if (!hasAnySocial && socialsContainer) {
+        socialsContainer.style.display = 'none';
     }
 
     // Role Rotator / Typewriter
@@ -260,6 +274,33 @@ function renderProjects(projects) {
     const gridContainer = document.getElementById('projects-grid');
     const tabsContainer = document.getElementById('projects-tabs');
     if (!gridContainer || !projects) return;
+
+    // Handle empty projects gracefully
+    if (projects.length === 0) {
+        if (tabsContainer) tabsContainer.style.display = 'none';
+        gridContainer.innerHTML = `
+            <div class="stat-card" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3.5rem 2rem; border: 1px dashed rgba(56, 189, 248, 0.35); background: rgba(14, 17, 26, 0.65); border-radius: var(--radius-lg);">
+                <div style="width: 56px; height: 56px; border-radius: 16px; background: rgba(56, 189, 248, 0.12); color: var(--accent-sky); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="project-badge-tag" style="position: static; margin-bottom: 0.85rem;">
+                    PROJECT SHOWCASE IN PROGRESS
+                </div>
+                <h3 class="text-gradient" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem;">
+                    10+ Projects Currently Being Documented & Staged
+                </h3>
+                <p style="color: var(--text-secondary); max-width: 600px; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Full-stack web applications, AI reverse engineering prototypes, and system security tools are currently being packaged for public release. Case studies and live interactive demos will be available here soon.
+                </p>
+                <a href="#contact" class="btn btn-secondary btn-sm">
+                    Inquire for Private Demos & Code Samples →
+                </a>
+            </div>
+        `;
+        return;
+    }
+
+    if (tabsContainer) tabsContainer.style.display = 'flex';
 
     // Filter tabs
     if (tabsContainer) {
@@ -720,6 +761,7 @@ function showToast(msg) {
    ========================================================================== */
 function getIconSvg(name) {
     const svgs = {
+        'shield': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
         'code': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>',
         'layers': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>',
         'git-commit': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="1.05" y1="12" x2="7" y2="12"></line><line x1="17.01" y1="12" x2="22.96" y2="12"></line></svg>',
