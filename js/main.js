@@ -384,6 +384,9 @@ function filterProjects(cat) {
 function renderTimeline(experience, education, certifications) {
     const expContainer = document.getElementById('experience-timeline');
     if (expContainer && experience) {
+        if (experience.length === 0) {
+            expContainer.innerHTML = '<div class="timeline-card"><h4 class="timeline-role">A student, not a professional hire—yet</h4><p class="timeline-desc">I am focusing on coursework, practice and building projects. Completed work will be documented here as I go.</p></div>';
+        } else {
         expContainer.innerHTML = experience.map(exp => `
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -403,6 +406,7 @@ function renderTimeline(experience, education, certifications) {
                 </div>
             </div>
         `).join('');
+        }
     }
 
     const eduContainer = document.getElementById('education-cards');
@@ -418,18 +422,24 @@ function renderTimeline(experience, education, certifications) {
 
     const certContainer = document.getElementById('certifications-cards');
     if (certContainer && certifications) {
+        if (!certifications.length) {
+            certContainer.innerHTML = '<p class="timeline-desc">No certifications to list yet. I will add verified credentials here when I earn them.</p>';
+        } else {
         certContainer.innerHTML = certifications.map(cert => `
             <div class="cert-card">
                 <div style="font-weight:700; color:var(--text-primary);">${cert.title}</div>
                 <div style="font-size:0.85rem; color:var(--accent-sky);">${cert.issuer} • ${cert.year}</div>
             </div>
         `).join('');
+        }
     }
 }
 
 function renderServices(services) {
     const container = document.getElementById('services-grid');
     if (!container || !services) return;
+
+    if (!services.length) { container.innerHTML = ''; return; }
 
     container.innerHTML = services.map(s => `
         <div class="service-card">
@@ -448,6 +458,8 @@ function renderServices(services) {
 function renderTestimonials(testimonials) {
     const container = document.getElementById('testimonials-grid');
     if (!container || !testimonials) return;
+
+    if (!testimonials.length) { container.innerHTML = ''; return; }
 
     container.innerHTML = testimonials.map(t => `
         <div class="stat-card" style="display:block; padding:1.75rem;">
