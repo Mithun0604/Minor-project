@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithun Krishna K | Full Stack & Creative Engineer Portfolio</title>
+    <meta name="description" content="Personal portfolio of Mithun Krishna K - Full Stack Engineer, Creative Web Technologist, and Cloud Architect.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/avatar.svg">
+    <!-- Google Fonts Preconnect & Inter / JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Ambient Interactive Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Floating Navigation Bar -->
+    <header class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="#hero" class="nav-brand">
+                    <span class="brand-badge">MK</span>
+                    <span><span data-bind="preferredName">Mithun</span><span style="color:var(--accent-sky);">.dev</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#timeline" class="nav-link">Experience</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <!-- Sound Feedback Toggle -->
+                    <button id="sound-toggle-btn" class="icon-btn" title="Toggle UI Sound Effects" aria-label="Toggle UI Sound Effects">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                    </button>
+
+                    <!-- Interactive Resume Modal Trigger -->
+                    <button class="btn btn-secondary btn-sm open-resume-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Resume
+                    </button>
+
+                    <a href="#contact" class="btn btn-primary btn-sm">
+                        Let's Talk
+                    </a>
+
+                    <!-- Mobile Menu Hamburger -->
+                    <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle Navigation Menu">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu-drawer" class="mobile-menu-drawer">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#timeline" class="nav-link">Experience</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button class="btn btn-primary open-resume-btn" style="width:100%; margin-top:0.5rem;">View Resume</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <!-- Availability Pill -->
+                        <div>
+                            <div class="status-pill">
+                                <span class="status-dot"></span>
+                                <span data-bind="status-text">Available for New Opportunities</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Headings -->
+                        <h1 class="hero-title">
+                            Engineering <span class="text-gradient">Next-Gen</span> Digital Products.
+                        </h1>
+
+                        <!-- Dynamic Role Switcher -->
+                        <div class="hero-role-wrapper">
+                            <span>I am a</span>
+                            <span id="hero-role-text" class="hero-role-text">Full Stack Engineer</span>
+                        </div>
+
+                        <!-- Summary -->
+                        <p class="hero-description" data-bind="summary">
+                            I build responsive, accessible, and high-velocity web applications with clean code architectures, modern design aesthetics, and scalable backend infrastructure.
+                        </p>
+
+                        <!-- Action CTAs -->
+                        <div class="hero-ctas">
+                            <a href="#projects" class="btn btn-primary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                Explore Featured Works
+                            </a>
+                            <button class="btn btn-secondary open-resume-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                View CV / Resume
+                            </button>
+                        </div>
+
+                        <!-- Social Handles -->
+                        <div class="hero-socials">
+                            <span style="font-size:0.85rem; color:var(--text-muted); margin-right:0.3rem;">Connect:</span>
+                            <a href="#" class="social-link" data-social="github" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                            </a>
+                            <a href="#" class="social-link" data-social="linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </a>
+                            <a href="#" class="social-link" data-social="twitter" target="_blank" rel="noopener noreferrer" title="Twitter / X">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                            </a>
+                            <a href="mailto:mithunkrishna.dev@gmail.com" class="social-link" title="Direct Email">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visual Tech Avatar Card -->
+                    <div class="hero-visual">
+                        <div class="hero-avatar-card">
+                            <div class="avatar-glow-blob"></div>
+                            <img src="assets/images/avatar.svg" alt="Mithun Krishna K Avatar" class="hero-avatar-img">
+                            <div class="hero-avatar-info">
+                                <h3 class="hero-avatar-name" data-bind="name">Mithun Krishna K</h3>
+                                <p class="hero-avatar-location">📍 <span data-bind="location">India</span></p>
+                            </div>
+
+                            <!-- Floating Badges -->
+                            <div class="floating-badge floating-badge-1">
+                                <span>⚡</span> Full Stack Dev
+                            </div>
+                            <div class="floating-badge floating-badge-2">
+                                <span>🚀</span> React & Node.js
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STATS / METRICS RIBBON ================= -->
+        <section class="stats-ribbon">
+            <div class="container">
+                <div id="stats-grid" class="stats-grid">
+                    <!-- Injected dynamically via main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT SECTION ================= -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Identity & Philosophy</span>
+                    <h2 class="section-title">Behind the Code</h2>
+                    <p class="section-subtitle">Bridging engineering precision with creative design aesthetics.</p>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Left: Narrative -->
+                    <div class="about-narrative">
+                        <h3 id="about-heading" class="about-heading"></h3>
+                        <div id="about-paragraphs"></div>
+                        <div style="margin-top:0.5rem;">
+                            <a href="#contact" class="btn btn-secondary btn-sm">
+                                Let's Discuss Opportunities →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Core Engineering Pillars -->
+                    <div id="about-pillars-grid" class="about-pillars-grid">
+                        <!-- Injected dynamically via main.js -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SKILLS & TECH STACK ================= -->
+        <section id="skills" class="section" style="background: rgba(11, 13, 20, 0.4);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Technical Arsenal</span>
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    <p class="section-subtitle">A modern toolkit refined across production systems and creative projects.</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div id="skills-tabs" class="filter-tabs">
+                    <!-- Injected dynamically -->
+                </div>
+
+                <!-- Skills Grid -->
+                <div id="skills-grid" class="skills-grid">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FEATURED PROJECTS ================= -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Selected Works</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">A showcase of full-stack platforms, interactive web experiences, and developer tools.</p>
+                </div>
+
+                <!-- Project Filters -->
+                <div id="projects-tabs" class="filter-tabs">
+                    <button class="filter-tab active" data-project-category="all">All Projects</button>
+                    <button class="filter-tab" data-project-category="fullstack">Full Stack</button>
+                    <button class="filter-tab" data-project-category="ai">AI / ML</button>
+                    <button class="filter-tab" data-project-category="frontend">Frontend / UI</button>
+                    <button class="filter-tab" data-project-category="tools">Tools & CLI</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Injected dynamically via main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TIMELINE (EXPERIENCE & EDUCATION) ================= -->
+        <section id="timeline" class="section" style="background: rgba(11, 13, 20, 0.4);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Career Milestones</span>
+                    <h2 class="section-title">Experience & Journey</h2>
+                    <p class="section-subtitle">Professional track record, academic background, and technical certifications.</p>
+                </div>
+
+                <div class="timeline-section-grid">
+                    <!-- Left: Work Experience Timeline -->
+                    <div>
+                        <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
+                            <span>💼</span> Professional Experience
+                        </h3>
+                        <div id="experience-timeline" class="timeline">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Education & Certifications -->
+                    <div>
+                        <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
+                            <span>🎓</span> Academic Background
+                        </h3>
+                        <div id="education-cards">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <h3 style="font-size:1.35rem; font-weight:700; margin-top:2.5rem; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
+                            <span>📜</span> Certifications & Credentials
+                        </h3>
+                        <div id="certifications-cards">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Capabilities</span>
+                    <h2 class="section-title">What I Bring to the Table</h2>
+                    <p class="section-subtitle">Specialized engineering services tailored for high-growth tech companies and founders.</p>
+                </div>
+
+                <div id="services-grid" class="services-grid">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TESTIMONIALS / COLLABORATION ================= -->
+        <section class="section" style="padding-top:2rem; padding-bottom:4rem;">
+            <div class="container">
+                <div class="section-header" style="margin-bottom:2.5rem;">
+                    <span class="section-tag">Social Proof</span>
+                    <h2 class="section-title">Collaborator Feedback</h2>
+                </div>
+                <div id="testimonials-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.5rem;">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT SECTION ================= -->
+        <section id="contact" class="section" style="background: rgba(11, 13, 20, 0.4);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2 class="section-title">Let's Build Something Great</h2>
+                    <p class="section-subtitle">Have an exciting idea, open position, or technical challenge? Reach out directly.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Info Cards -->
+                    <div class="contact-info">
+                        <div class="contact-card-box">
+                            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:1rem;">Contact Details</h3>
+
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="contact-item-label">Email</div>
+                                    <div class="contact-item-value" data-bind="email">mithunkrishna.dev@gmail.com</div>
+                                </div>
+                                <button id="copy-email-btn" class="copy-btn">Copy</button>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="contact-item-label">Phone / WhatsApp</div>
+                                    <div class="contact-item-value" data-bind="phone">+91 98765 43210</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                </div>
+                                <div>
+                                    <div class="contact-item-label">Location & Timezone</div>
+                                    <div class="contact-item-value"><span data-bind="location">India</span> (IST • UTC+5:30)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Availability Status Box -->
+                        <div class="contact-card-box" style="border-left: 3px solid var(--accent-emerald);">
+                            <div style="font-weight:700; color:#34d399; margin-bottom:0.25rem;">● Currently Open to Inquiries</div>
+                            <p style="font-size:0.88rem; color:var(--text-secondary);">
+                                Interested in full-time engineering roles, high-impact consulting, and innovative freelance collaborations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Box -->
+                    <div class="contact-form-box">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Your Email</label>
+                                <input type="email" name="email" class="form-input" placeholder="alex@company.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Service or Inquiry Type</label>
+                                <select name="service" class="form-select">
+                                    <option value="Full Stack Development">Full Stack Development Project</option>
+                                    <option value="Full-time Job Opportunity">Full-time Job Opportunity</option>
+                                    <option value="Frontend & UI Engineering">Creative Frontend & UI/UX</option>
+                                    <option value="Backend & API Architecture">Backend & API Architecture</option>
+                                    <option value="General Collaboration">General Collaboration / Coffee Chat</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Your Message</label>
+                                <textarea name="message" class="form-textarea" placeholder="Tell me a bit about what you're working on and how I can help..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width:100%;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    Designed in the spirit of <strong>ECHO</strong>. Built with precision & modern web standards.
+                    <br>© <span id="copyright-year">2026</span> <span data-bind="name">Mithun Krishna K</span>. All rights reserved.
+                </div>
+
+                <div id="local-time" class="footer-time">
+                    ● IST: Loading...
+                </div>
+
+                <div>
+                    <a href="#hero" class="btn btn-secondary btn-sm">
+                        ↑ Back to Top
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS ================= -->
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Close Modal">✕</button>
+            <div id="project-modal-body">
+                <!-- Dynamically populated via main.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Resume Modal -->
+    <div id="resume-modal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Close Modal">✕</button>
+            <div id="resume-modal-body">
+                <!-- Dynamically populated via main.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
